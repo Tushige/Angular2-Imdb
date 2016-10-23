@@ -1,0 +1,47 @@
+<div id="actor-details-component">
+  <div *ngIf = "actor" class="container-fluid">
+    <i id="goBack" class="fa fa-arrow-circle-left fa-3x" aria-hidden="true" (click)="goBack()"></i>
+    <div id="image-space" class="row">
+      <!-- Column containing actor information-->
+      <div class="col-md-4">
+        <img
+          id="thumbnail"
+          src="{{actor.image}}"
+          height="300"
+          width="300"
+          (@flyInLeft.start) = "filmographyLoading($event)"
+          (@flyInLeft.done) = "filmographyLoaded($event)"
+          [@flyInLeft] = "'loaded'"
+        >
+      </div>
+      <div class="col-md-8" [@flyInRight]="'loadedR'">
+        <span id="actorName">
+          {{actor.title}}
+        </span>
+        <span id="actorDescription">
+          {{actor.description}}
+        </span>
+      </div>
+    </div>
+    <div id="film-list" class="row">
+      <!-- Column containing filmography -->
+      <div align="center">
+        <ul class="filmography">
+          <li
+          *ngFor="let film of actor.filmography"
+          (@flyInLeft.start) = "filmographyLoading($event)"
+          (@flyInLeft.done) = "filmographyLoaded($event)"
+          [@flyInLeft] = "'loaded'"
+          >
+            <span class="badge">
+              {{film.year}}
+            </span>
+            <a href="{{film.info}}">
+              {{film.title}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
