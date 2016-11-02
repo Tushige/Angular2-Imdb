@@ -1,0 +1,18 @@
+<div id="dashboad-component"
+[@fadeIn] = "'loaded'">
+  <h2 id="title">
+    Search for actors
+  </h2>
+    <input #searchBox id="search-box" (keyup)="searchActor(searchBox.value)"/>
+    <!-- 'async' handles the Observable subscribtion -->
+    <div>
+      <ul class="actors">
+        <li *ngFor = "let actor of matched_people | async" (click)="requestActorDetails(actor)"
+        [@flyInOut] = "'in'" >
+          <span class="actor">
+            {{actor.title}}
+          </span>
+        </li>
+      </ul>
+    </div>
+</div>
