@@ -8,8 +8,6 @@
     <div>
       <ul class="actors">
         <li *ngFor = "let actor of matched_people | async" (click)="requestActorDetails(actor)"
-        (@flyInOut.start) = "animationStarted($event)"
-        (@flyInOut.done) = "animationDone($event)"
         [@flyInOut] = "'in'" >
           <span class="actor">
             {{actor.title}}

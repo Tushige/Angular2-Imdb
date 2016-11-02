@@ -1,6 +1,7 @@
 #image-space {
   margin: 100px 0 0 0;
 }
+
 #actorName {
   display:block;
   color:white;
@@ -13,6 +14,7 @@
   cursor: pointer;
   font: 20px Bitter, Monospace;
 }
+
 /*ul*/
 .filmography {
   display: inline-block;
@@ -20,6 +22,7 @@
   margin: 100px 0 0 0;
   padding: 0;
 }
+
 /*film item*/
 .filmography li {
   display: block;
@@ -70,6 +73,9 @@
   color:black;
   font:Bold 20px Bitter, Monospace;s
   border-radius: 4px;
+  text-overflow: ellipsis;;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #goBack {
   cursor: pointer;
@@ -77,4 +83,16 @@
 }
 #goBack:hover {
   color: #607D8B;
+}
+#bio {
+  text-decoration: none;
+}
+#bio:hover {
+  color:#607D8B;
+}
+#loadingIndicator {
+  text-align: center;
+  position: relative;
+  /*To DO: change hardcoded value*/
+  top:200px;
 }

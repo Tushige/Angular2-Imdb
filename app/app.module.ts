@@ -15,7 +15,7 @@ import {AppComponent} from './app.component';
 import {DashboardComponent} from './dashboard.component';
 import {PeopleSearchService} from './people-search.service';
 import {ActorDetailsComponent} from './actor-details.component';
-
+import {LoadingService} from './loading.component';
 //enable production
 enableProdMode();
 /*
@@ -45,7 +45,8 @@ enableProdMode();
   declarations: [
     AppComponent,
     DashboardComponent,
-    ActorDetailsComponent
+    ActorDetailsComponent,
+    LoadingService
   ],
   providers: [PeopleSearchService],
   bootstrap: [AppComponent]

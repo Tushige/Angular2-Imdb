@@ -55,7 +55,6 @@ import {People} from './people';
 export class DashboardComponent {
   /* class variables*/
   private peopleSearchTermStream = new Subject<string>();
-  private selectedActor: string;
   matched_people: Observable<void> = this.peopleSearchTermStream
       //how long we wait for the user to stop typing
       .debounceTime(300)
@@ -79,13 +78,5 @@ export class DashboardComponent {
   requestActorDetails(selected: People) {
     let link = ['actor-details', selected.id];
     this.router.navigate(link);
-  }
-  animationStarted(event:AnimationTransitionEvent) {
-    console.log("animation enter");
-    console.log(event);
-  }
-  animationDone(event:AnimationTransitionEvent) {
-    console.log("animation leave");
-    console.log(event);
   }
 }

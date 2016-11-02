@@ -17,6 +17,7 @@ import { Subject }          from 'rxjs/Subject';
 import {Router} from '@angular/router';
 import {People} from './people';
 import {Actor} from './actor';
+import {LoadingService} from './loading.component';
 
 @Component({
   moduleId: module.id,
@@ -60,6 +61,8 @@ import {Actor} from './actor';
 export class ActorDetailsComponent implements OnInit{
 
   private actor: Actor;
+  private bioLink: string;
+  private isLoading: boolean = true;
   private resourcePromise: Promise<void>;
   constructor(
     private route: ActivatedRoute,
@@ -69,11 +72,13 @@ export class ActorDetailsComponent implements OnInit{
   ) {};
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
-      // '+' converst 'String' to 'Number'
       let resource_id = params['resource_id'];
       this.resourcePromise = this.peopleSearchService.searchActor(resource_id)
           .then(actor => {
             this.actor = actor;
+            this.isLoading = undefined;
+            this.actor.description = this.actor.description.split('...')[0] + "...";
+            this.bioLink = "http://www.imdb.com/name/"+resource_id;
             this.actor.filmography.forEach(function(film) {
               film['year'] = film['year'] ==="" ? "3000" : film['year'].replace(/&nbsp;/g, "");
             })
@@ -87,13 +92,5 @@ export class ActorDetailsComponent implements OnInit{
   }
   goBack():void {
     this.location.back();
-  }
-  filmographyLoading(event: AnimationTransitionEvent): void {
-    console.log("list loading");
-    console.log(event);
-  }
-  filmographyLoaded(event: AnimationTransitionEvent):void {
-    console.log("list loaded");
-    console.log(event);
   }
 }

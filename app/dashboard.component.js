@@ -38,14 +38,6 @@ var DashboardComponent = (function () {
         var link = ['actor-details', selected.id];
         this.router.navigate(link);
     };
-    DashboardComponent.prototype.animationStarted = function (event) {
-        console.log("animation enter");
-        console.log(event);
-    };
-    DashboardComponent.prototype.animationDone = function (event) {
-        console.log("animation leave");
-        console.log(event);
-    };
     DashboardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

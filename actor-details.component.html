@@ -1,4 +1,7 @@
 <div id="actor-details-component">
+  <div id="loadingIndicator" *ngIf="isLoading">
+    <loader> <!--Loading Indicator goes here--></loader>
+  </div>
   <div *ngIf = "actor" class="container-fluid">
     <i id="goBack" class="fa fa-arrow-circle-left fa-3x" aria-hidden="true" (click)="goBack()"></i>
     <div id="image-space" class="row">
@@ -9,8 +12,6 @@
           src="{{actor.image}}"
           height="300"
           width="300"
-          (@flyInLeft.start) = "filmographyLoading($event)"
-          (@flyInLeft.done) = "filmographyLoaded($event)"
           [@flyInLeft] = "'loaded'"
         >
       </div>
@@ -20,6 +21,9 @@
         </span>
         <span id="actorDescription">
           {{actor.description}}
+          <a id="bio" href="{{bioLink}}">
+            See full bio <i class="fa fa-external-link-square" aria-hidden="true"></i>
+          </a>
         </span>
       </div>
     </div>
@@ -29,8 +33,6 @@
         <ul class="filmography">
           <li
           *ngFor="let film of actor.filmography"
-          (@flyInLeft.start) = "filmographyLoading($event)"
-          (@flyInLeft.done) = "filmographyLoaded($event)"
           [@flyInLeft] = "'loaded'"
           >
             <span class="badge">

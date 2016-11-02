@@ -24,6 +24,7 @@ var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard.component');
 var people_search_service_1 = require('./people-search.service');
 var actor_details_component_1 = require('./actor-details.component');
+var loading_component_1 = require('./loading.component');
 //enable production
 core_1.enableProdMode();
 /*
@@ -57,7 +58,8 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 dashboard_component_1.DashboardComponent,
-                actor_details_component_1.ActorDetailsComponent
+                actor_details_component_1.ActorDetailsComponent,
+                loading_component_1.LoadingService
             ],
             providers: [people_search_service_1.PeopleSearchService],
             bootstrap: [app_component_1.AppComponent]
